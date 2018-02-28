@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2F91A033-77C3-41AC-87C9-7CEEA704A97F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VCT</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)/include/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)/lib/$(Configuration)/;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)d</TargetName>
+    <OutDir>$(SolutionDir)\bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)/include/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)/lib/$(Configuration);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\ext\DirectXTex;$(ProjectDir)\src\;$(ProjectDir)\src\Renderer\;$(ProjectDir)\ext\imgui;$(ProjectDir)\ext\FX11-master\Binary;$(ProjectDir)\ext\FX11-master\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;DirectXTex.lib;Effects11d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\;$(ProjectDir)\src\Renderer\;$(ProjectDir)\ext\imgui;$(ProjectDir)\ext\DirectXTex;$(ProjectDir)\ext\FX11-master\Binary;$(ProjectDir)\ext\FX11-master\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;DirectXTex.lib;Effects11.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ext\imgui\imconfig.h" />
+    <ClInclude Include="ext\imgui\imgui.h" />
+    <ClInclude Include="ext\imgui\imgui_internal.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\GameTimer.h" />
+    <ClInclude Include="src\GeometryGenerator.h" />
+    <ClInclude Include="src\GlobalUtils.h" />
+    <ClInclude Include="src\InputHandler.h" />
+    <ClInclude Include="src\Light.h" />
+    <ClInclude Include="src\Material.h" />
+    <ClInclude Include="src\Renderer\Blur.h" />
+    <ClInclude Include="src\Renderer\D3DRenderer.h" />
+    <ClInclude Include="src\Renderer\D3DStructuredBuffer.h" />
+    <ClInclude Include="src\Renderer\D3DTextureBuffer2D.h" />
+    <ClInclude Include="src\Renderer\D3DTextureBuffer3D.h" />
+    <ClInclude Include="src\Renderer\DefaultShader.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXBlur.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXConeTracing.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXDefault.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXGBuffer.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXGenerateBrickBuffer.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXGenerateOctree.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXImGui.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXOctreeVariables.h" />
+    <ClInclude Include="src\Renderer\FXBindings\FXShadowMap.h" />
+    <ClInclude Include="src\Renderer\FXBindings\GeneralFX.h" />
+    <ClInclude Include="src\Renderer\GBuffer.h" />
+    <ClInclude Include="src\Renderer\D3DGeometryBuffer.h" />
+    <ClInclude Include="src\Renderer\Octree.h" />
+    <ClInclude Include="src\Renderer\ShadowMapper.h" />
+    <ClInclude Include="src\Renderer\UIDrawer.h" />
+    <ClInclude Include="src\Renderer\VCT.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\SceneGeometry.h" />
+    <ClInclude Include="src\Settings.h" />
+    <ClInclude Include="src\WindowHandler.h" />
+    <None Include="src\FX\utils.fx">
+      <FileType>CppHeader</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ext\imgui\imgui.cpp" />
+    <ClCompile Include="ext\imgui\imgui_demo.cpp" />
+    <ClCompile Include="ext\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\GameTimer.cpp" />
+    <ClCompile Include="src\GeometryGenerator.cpp" />
+    <ClCompile Include="src\GlobalUtils.cpp" />
+    <ClCompile Include="src\InputHandler.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Renderer\Blur.cpp" />
+    <ClCompile Include="src\Renderer\D3DRenderer.cpp" />
+    <ClCompile Include="src\Renderer\D3DStructuredBuffer.cpp" />
+    <ClCompile Include="src\Renderer\D3DTextureBuffer2D.cpp" />
+    <ClCompile Include="src\Renderer\D3DTextureBuffer3D.cpp" />
+    <ClCompile Include="src\Renderer\DefaultShader.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXBlur.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXConeTracing.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXDefault.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXGBuffer.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXGenerateBrickBuffer.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXGenerateOctree.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXImGui.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXOctreeVariables.cpp" />
+    <ClCompile Include="src\Renderer\FXBindings\FXShadowMap.cpp" />
+    <ClCompile Include="src\Renderer\GBuffer.cpp" />
+    <ClCompile Include="src\Renderer\D3DGeometryBuffer.cpp" />
+    <ClCompile Include="src\Renderer\Octree.cpp" />
+    <ClCompile Include="src\Renderer\ShadowMapper.cpp" />
+    <ClCompile Include="src\Renderer\UIDrawer.cpp" />
+    <ClCompile Include="src\Renderer\VCT.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SceneGeometry.cpp" />
+    <ClCompile Include="src\Settings.cpp" />
+    <ClCompile Include="src\WindowHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\FX\blur.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\FX\brickBuffer.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PreprocessorDefinitions>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <None Include="src\FX\brickBufferUtils.fx">
+      <FileType>Document</FileType>
+    </None>
+    <FxCompile Include="src\FX\color.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\FX\coneTracing.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\FX\gbuffer.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <None Include="src\FX\indirectBufferUtils.fx">
+      <FileType>Document</FileType>
+    </None>
+    <FxCompile Include="src\FX\ImGui.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <None Include="src\FX\octreeUtils.fx">
+      <FileType>Document</FileType>
+    </None>
+    <FxCompile Include="src\FX\shadowMap.fx">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\FX\voxelization.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)/FXbin/Debug/%(Filename).cso</ObjectFileOutput>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D3DCOMPILE_DEBUG</PreprocessorDefinitions>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)/FXbin/Release/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

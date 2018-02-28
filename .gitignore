@@ -1,0 +1,9 @@
+logError.txt
+logInfo.txt
+
+*.suo
+*.vcxproj.user
+
+*.pdb
+*.ilk
+

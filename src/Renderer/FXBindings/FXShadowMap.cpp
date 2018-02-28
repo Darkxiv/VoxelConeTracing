@@ -1,0 +1,50 @@
+#include <FXBindings/FXShadowMap.h>
+#include <GlobalUtils.h>
+#include <d3dx11effect.h>
+#include <D3DRenderer.h>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FXShadowMap::~FXShadowMap( )
+{
+    Clear( );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool FXShadowMap::Load( )
+{
+    D3DRenderer &renderer = D3DRenderer::Get( );
+    HRESULT hr = renderer.CreateEffect( "shadowMap.cso", &mFX );
+
+    if ( hr == S_OK )
+    {
+        bool loadingCheck = true;
+
+        GET_FX_VAR( loadingCheck, mShadowMapTech, mFX->GetTechniqueByName( "ShadowMap" ) );
+        if ( mShadowMapTech->IsValid() )
+            GET_FX_VAR( loadingCheck, mfxShadowMapPass, mShadowMapTech->GetPassByName( "ShadowMapPass" ) );
+
+        GET_FX_VAR( loadingCheck, mfxWorldViewProj, mFX->GetVariableByName( "gWorldViewProj" )->AsMatrix( ) );
+
+        mIsLoaded = loadingCheck;
+    }
+    ASSERT( mIsLoaded );
+
+    return mIsLoaded;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FXShadowMap::Clear()
+{
+    mIsLoaded = false;
+    COMSafeRelease( mFX );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+GeneralFX::FXType FXShadowMap::GetType( )
+{
+    return mType;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool FXShadowMap::IsLoaded( )
+{
+    return mIsLoaded;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

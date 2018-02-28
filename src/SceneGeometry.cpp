@@ -1,0 +1,14 @@
+#include <SceneGeometry.h>
+#include <GlobalUtils.h>
+#include <Material.h>
+#include <D3DRenderer.h>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+SceneGeometry::SceneGeometry( const std::string &objName, const std::shared_ptr<D3DGeometryBuffer> &geometryBuffer,
+    std::shared_ptr<Material> mat ) :
+mName( objName ),
+mGeometryBuffer( geometryBuffer ),
+mMaterial( mat )
+{
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

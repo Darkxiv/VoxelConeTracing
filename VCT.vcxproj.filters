@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{9b03042f-c4ae-4b02-9fd5-57f16eacb174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{aed72adf-94ae-437d-8c07-e2cf55357954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\FXBindings">
+      <UniqueIdentifier>{4f722e3d-18eb-41b9-9849-74c0d9e6db43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX">
+      <UniqueIdentifier>{e810c84b-1232-478b-8d33-93ab9b2a71a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GeometryGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GlobalUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WindowHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\GBuffer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXGBuffer.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXConeTracing.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXDefault.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXGenerateBrickBuffer.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXGenerateOctree.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXImGui.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXOctreeVariables.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\DefaultShader.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\ShadowMapper.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXShadowMap.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\VCT.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\UIDrawer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\D3DRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\D3DStructuredBuffer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\D3DTextureBuffer2D.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\D3DTextureBuffer3D.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FXBindings\FXBlur.cpp">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Blur.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\D3DGeometryBuffer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Octree.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ext\imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\GBuffer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXGBuffer.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXConeTracing.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXDefault.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXGenerateBrickBuffer.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXGenerateOctree.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXImGui.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXOctreeVariables.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\GeneralFX.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\DefaultShader.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\ShadowMapper.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXShadowMap.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\VCT.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\UIDrawer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\D3DRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\D3DStructuredBuffer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\D3DTextureBuffer2D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\D3DTextureBuffer3D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameTimer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GeometryGenerator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlobalUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InputHandler.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Light.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Material.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneGeometry.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowHandler.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Settings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FXBindings\FXBlur.h">
+      <Filter>Renderer\FXBindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Blur.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\D3DGeometryBuffer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Octree.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\FX\color.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\gbuffer.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\voxelization.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\brickBuffer.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\coneTracing.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\ImGui.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\shadowMap.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+    <FxCompile Include="src\FX\blur.fx">
+      <Filter>FX</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\FX\utils.fx">
+      <Filter>FX</Filter>
+    </None>
+    <None Include="src\FX\octreeUtils.fx">
+      <Filter>FX</Filter>
+    </None>
+    <None Include="src\FX\indirectBufferUtils.fx">
+      <Filter>FX</Filter>
+    </None>
+    <None Include="src\FX\brickBufferUtils.fx">
+      <Filter>FX</Filter>
+    </None>
+  </ItemGroup>
+</Project>
