@@ -563,6 +563,8 @@ void ContributeIrradianceChildsToParent( inout float4 texels[TEXELS_COUNT], uint
 // for each voxels from higher level calculate childs average
 void GatherValuesFromLowLevelVS( uint nodeOffset: SV_VertexID, uniform bool isIrradiance )
 {
+    // WARNING: there is an error - gather pass should taking into account 8..27 values per new brick texel but it takes 8..64 istead
+
     // get octree and brick coords
     uint levelOffset = LevelOffset( currentOctreeLevel );
     uint currentNodeID = levelOffset + nodeOffset;
@@ -721,7 +723,7 @@ void DebugBuffersGS( point DebugVOut gin[1], inout TriangleStream<DebugGOut> tri
             vin.posH = float4( wPos, 1.0f );
 
             uint brickSize = octreeResolution >> ( octreeHeight - octreeLevel );
-            float width = ( maxBB.x - minBB.x - EPS ) / brickSize * 0.9;
+            float width = ( maxBB.x - minBB.x - EPS ) / brickSize;
 
             gout[0].wPosOrCol = vin.posH + float4(  0.0f,  0.0f,  0.0f, 0.0f );
             gout[1].wPosOrCol = vin.posH + float4( width,  0.0f,  0.0f, 0.0f );
@@ -771,7 +773,7 @@ DebugRT DebugBuffersPS( DebugGOut pin, uniform bool showVoxels ) : SV_Target
     }
     else
     {
-        float3 outputColor = float3( 1.0f, 0.0f, 0.0f );
+        float3 outputColor = 0.0f.xxx;
 
         uint octreePos = WorlPosToOctreePos( pin.wPosOrCol.xyz );
         int3 nodeStartCoords = 0;

@@ -29,6 +29,8 @@ uint debugOctreeFirstLevel;
 uint debugOctreeLastLevel;
 bool debugView;
 
+static const uint conesNum = 5;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 FullScreenQuadOut FullScreenQuadOutVS( Vertex_3F3F3F2F vin )
 {
@@ -73,46 +75,14 @@ bool WorldToBrickPosition( in float3 worldPos, in uint octreeLevel, out float3 b
     return false;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
+void RotateConesDir( float3 normal, inout float3 coneDir[conesNum] )
 {
-    float3 normal = normalTexture.Load( int3( pin.PosH.xy * resScale, 0 ) ).xyz * 2.0f - 1.0f;
-    float  depth  =  depthTexture.Load( int3( pin.PosH.xy * resScale, 0 ) ).r;
-
-    // get world position
-    float4 projCoords = float4( float2( pin.UV.x, 1.0f - pin.UV.y ) * 2.0f - 1.0f, depth, 1.0f);
-    float3 worldPos = GetWorldPos( projCoords, gInverseProj, gInverseView ).xyz;
-
-    // discard everything outside the octree
-    if ( any( worldPos < minBB ) || any( worldPos >  maxBB ) )
-        discard;
-
-    // generate severals cones
-    const uint conesNum = 5;
-    float coneAO[conesNum] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-    float4 coneCol[conesNum] = { 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx };
-    
-    // half-sphere direction distribution
-    // assume each cone has 60 degree
-    float3 coneDir[conesNum] = {
-        float3(  0.0f,      1.0f,  0.0f      ),
-        float3(  0.374999f, 0.5f,  0.374999f ),
-        float3(  0.374999f, 0.5f, -0.374999f ),
-        float3( -0.374999f, 0.5f,  0.374999f ),
-        float3( -0.374999f, 0.5f, -0.374999f )
-    };
-    
-    // 6 cones case
-    // float3 coneDir[conesNum] = {
-    //    float3(  0.0f,      1.0f,  0.0f      ), float3(  0.0f,      0.5f,  0.866025f ), float3(  0.823639f, 0.5f,  0.267617f ),
-    //    float3(  0.509037f, 0.5f, -0.700629f ), float3( -0.509037f, 0.5f, -0.700629f ), float3( -0.823639f, 0.5f,  0.267617f ) };
-
     // find rotation between normal and half-sphere orientation (coneDir[0])
     float cosRotAngle = dot( normal, coneDir[0] );
     
     // also we can add random rotates to cones
     
     // don't rotate if vecs are co-directional
-    uint i = 0;
     if ( cosRotAngle < 0.995f )
     {
         float3 rotVec = float3( 1.0f, 0.0f, 0.0f );
@@ -128,7 +98,7 @@ float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
 
         // rotate half-sphere
         [unroll]
-        for ( i = 0; i < conesNum; i++ )
+        for ( uint i = 0; i < conesNum; i++ )
         {
             float3 a = coneDir[i];
             float3 v = rotVec;
@@ -149,6 +119,41 @@ float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
             }
         }
     }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
+{
+    float3 normal = normalTexture.Load( int3( pin.PosH.xy * resScale, 0 ) ).xyz * 2.0f - 1.0f;
+    float  depth  =  depthTexture.Load( int3( pin.PosH.xy * resScale, 0 ) ).r;
+
+    // get world position
+    float4 projCoords = float4( float2( pin.UV.x, 1.0f - pin.UV.y ) * 2.0f - 1.0f, depth, 1.0f);
+    float3 worldPos = GetWorldPos( projCoords, gInverseProj, gInverseView ).xyz;
+
+    // discard everything outside the octree
+    if ( any( worldPos < minBB ) || any( worldPos >  maxBB ) )
+        discard;
+
+    // generate severals cones
+    float coneAO[conesNum] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+    float4 coneCol[conesNum] = { 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx, 0.0f.xxxx };
+    
+    // half-sphere direction distribution
+    // assume each cone has 60 degree
+    float3 coneDir[conesNum] = {
+        float3(  0.0f,      1.0f,  0.0f      ),
+        float3(  0.374999f, 0.5f,  0.374999f ),
+        float3(  0.374999f, 0.5f, -0.374999f ),
+        float3( -0.374999f, 0.5f,  0.374999f ),
+        float3( -0.374999f, 0.5f, -0.374999f )
+    };
+    
+    // 6 cones case
+    // float3 coneDir[conesNum] = {
+    //    float3(  0.0f,      1.0f,  0.0f      ), float3(  0.0f,      0.5f,  0.866025f ), float3(  0.823639f, 0.5f,  0.267617f ),
+    //    float3(  0.509037f, 0.5f, -0.700629f ), float3( -0.509037f, 0.5f, -0.700629f ), float3( -0.823639f, 0.5f,  0.267617f ) };
+
+    RotateConesDir( normal, coneDir );
     
     const uint firstLevel = debugOctreeFirstLevel;
     const uint lastLevel = debugOctreeLastLevel;
@@ -162,10 +167,9 @@ float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
     float opacity = 0.0f;
     float3 worldSamplePos, brickSamplePos;
 
-    [unroll]
-    for ( i = 0; i < conesNum; i++ )
+    for ( uint i = 0; i < conesNum; i++ )
     {
-        [unroll(4)] // TODO try to make radiance texture array . . . performance tests
+        [unroll(4)]
         for ( uint octreeLevel = firstLevel; octreeLevel > lastLevel; octreeLevel-- )
         {
             // calculate sample pos on certain level ( position, normal, octreeLevel )
@@ -191,17 +195,15 @@ float4 ConeTracingPS( FullScreenQuadOut pin ) : SV_Target
                 }
                 coneAO[i] += opacity * aoFalloff;
 
-                curCol = float4( sampleCol.rgb, opacity );
+                curCol = float4( sampleCol.rgb * opacity, opacity );
                 prevCol = coneCol[i];
-                
-                // coneCol[i].rgb = prevCol.rgb * prevCol.a + curCol.rgb * curCol.a * ( 1.0f - prevCol.a );
+
                 coneCol[i].rgb = prevCol.rgb + curCol.rgb * ( 1.0f - prevCol.a );
                 coneCol[i].a = prevCol.a + ( 1.0f - prevCol.a ) * curCol.a;
             }
             else if ( any( worldSamplePos > maxBB ) || any( worldSamplePos < minBB ) )
             {
                 coneAO[i] += aoFalloff;
-                coneCol[i].rgb = coneCol[i].rgb * coneCol[i].a;
                 coneCol[i].a = 1.0f;
             }
 

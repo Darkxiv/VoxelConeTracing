@@ -166,6 +166,7 @@ void UIDrawer::BuildVCTUI( )
             if ( renderer.IsGIEnabled() )
             {
                 ImGui::Checkbox( "Enable GI", &settings.mVCTEnable );
+                ImGui::SliderFloat( "AO influence", &settings.mAOInfluence, 0.0f, 1.0f );
                 ImGui::SliderFloat( "GI influence", &settings.mIndirectInfluence, 0.0f, 1.0f );
                 ImGui::SliderFloat( "GI amplification", &settings.mVCTIndirectAmplification, 0.0f, 10.0f );
             }
@@ -191,7 +192,7 @@ void UIDrawer::BuildVCTUI( )
             ImGui::Checkbox( "Enable GI", &settings.mVCTEnable );
             ImGui::Checkbox( "Show AO", &settings.mShowAO );
             ImGui::SliderFloat( "AO influence", &settings.mAOInfluence, 0.0f, 1.0f );
-            ImGui::SliderFloat( "Lambda falloff", &settings.mVCTLambdaFalloff, 0.001f, 1.5f );
+            ImGui::SliderFloat( "Lambda falloff", &settings.mVCTLambdaFalloff, 0.001f, 0.3f );
 
             ImGui::Text( "VCT" );
             // ImGui::SliderFloat( "Cone local offset", &settings.mVCTLocalConeOffset, 0.001f, 10.0f ); // TODO should depends from last level size

@@ -289,7 +289,7 @@ bool TraverseOctreeR( in uint vPos, in uint currentLevel, out uint nodeValue, ou
     nodeCoords = 0;
     uint3 mask = 0;
     
-    [unroll(MAX_OCTREE_HEIGHT)]
+    // [unroll(MAX_OCTREE_HEIGHT)]
     for ( uint treeLevel = 0; treeLevel < currentLevel; treeLevel++ )
     {
         SelectNode( pos, mask, halfSize, nodeCoords, nodeValue );

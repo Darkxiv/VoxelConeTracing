@@ -122,8 +122,8 @@ LightingPixelOut CombinePS( FullVertexOut pin, uniform bool useVoxelConeTracing 
     {
         // true ambient
         float4 indirectIrradiance = indirectIrradianceTexture.Sample( linearSampler, pin.UV );
+        indirectIrradiance *= lerp( 1.0f, indirectIrradiance.a, aoInfluence );
         output.Color.rgb += lerp( 0.0f.xxx, indirectIrradiance.rgb, indirectInfluence ) * albedo;
-        output.Color.rgb *= lerp( 1.0f, indirectIrradiance.a, aoInfluence );
     }
 
     output.Color.a = 1.0f;

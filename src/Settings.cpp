@@ -19,12 +19,12 @@ Settings::Settings( )
     mShadowMapZFar = 5000.0f;
     mShadowBias = 3600;
 
-    mBlurRadius = 14.0f;
+    mBlurRadius = 6.0f;
     mBlurSharpness = 100000.0f;
 
     mDirectInfluence = 1.0f;
     mIndirectInfluence = 1.0f;
-    mAOInfluence = 0.5f;
+    mAOInfluence = 1.0f;
 
     // VCT settings
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,13 +39,13 @@ Settings::Settings( )
     mVCTDebugView = false;
     mVCTDebugConeDir = 0;
 
-    mVCTDebugOctreeFirstLevel = 6; // mVCTOctreeHeight - 1;
-    mVCTDebugOctreeLastLevel = 1; // mVCTOctreeHeight - 2;
+    mVCTDebugOctreeFirstLevel = 6;
+    mVCTDebugOctreeLastLevel = 2;
 
     mVCTLambdaFalloff = 0.06f;
     mVCTLocalConeOffset = 0.02f;
     mVCTWorldConeOffset = 12.2f;
-    mVCTIndirectAmplification = 2.2f;
+    mVCTIndirectAmplification = 6.0f;
     mVCTStepCorrection = 0.76f;
     mVCTUseOpacityBuffer = true;
     mVCTConeTracingRes = 400; // 800 for quality picture
@@ -60,7 +60,7 @@ Settings::Settings( )
     mSunPitch = 1.26f;
     mLightDistance = 1.0f;
     mSunColor[0] = 0.95f; mSunColor[1] = 0.97f; mSunColor[2] = 0.86f;
-    mSunPower = 1.1f;
+    mSunPower = 1.3f;
 
     mMouseSens = 0.005f;
     mInitCamPos[0] = 896; mInitCamPos[1] = 558; mInitCamPos[2] = 63;
