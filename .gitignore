@@ -1,5 +1,7 @@
 logError.txt
 logInfo.txt
+Debug/
+Release/
 
 *.suo
 *.vcxproj.user

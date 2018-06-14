@@ -7,6 +7,7 @@ If you'd like to program any technique you can start from DefaultShader and Rend
 Require: Microsoft Redistributable 2013, d3dcompiler_47.dll, DX11.1 compatible adapter (or at least DX10.0 compatible adapter to run application).
 
 Demo: https://youtu.be/gK837_HTfNU
+Explanation: https://habr.com/company/mailru/blog/353740/
 
 Author: Dontsov Valentin
 Email: dont.val@yandex.ru
